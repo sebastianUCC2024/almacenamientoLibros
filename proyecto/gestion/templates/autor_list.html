@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+<h2>Autores</h2>
+
+<a href="{% url 'crear_autor' %}"><button>Nuevo Autor</button></a>
+
+<ul>
+{% for autor in autores %}
+<li>
+{{ autor.nombre }} - {{ autor.correo }}
+
+<a href="{% url 'editar_autor' autor.pk %}"><button>Editar</button></a>
+<a href="{% url 'eliminar_autor' autor.pk %}"><button class="danger">Eliminar</button></a>
+</li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}

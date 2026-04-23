@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Autor, Libro
 from .forms import AutorForm, LibroForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
 # CRUD Autores
 def lista_autores(request):
     autores = Autor.objects.all()
@@ -69,3 +72,49 @@ def eliminar_libro(request, pk):
         libro.delete()
         return redirect('lista_libros')
     return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
+
+
+#Vistas genéricas
+class AutorListView(ListView):
+    model = Autor
+    template_name = 'gestion/lista_autores.html'
+    context_object_name = 'autores'
+    
+class LibroListView(ListView):
+    model = Libro
+    template_name = 'gestion/lista_libros.html'
+    context_object_name = 'libros'
+
+class AutorDeleteView(DeleteView):
+    model = Autor
+    template_name = 'gestion/autor_confirm_delete.html'
+    success_url = reverse_lazy('lista_autores')
+
+class LibroDeleteView(DeleteView):
+    model = Libro
+    template_name = 'gestion/libro_confirm_delete.html'
+    success_url = reverse_lazy('lista_libros')
+    
+class AutorCreateView(CreateView):
+    model = Autor
+    form_class = AutorForm
+    template_name = 'gestion/autor_create.html'
+    success_url = reverse_lazy('lista_autores')
+
+class LibroCreateView(CreateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'gestion/libro_form.html'
+    success_url = reverse_lazy('lista_libros')
+
+class AutorUpdateView(UpdateView):
+    model = Autor
+    form_class = AutorForm
+    template_name = 'gestion/autor_update.html'
+    success_url = reverse_lazy('lista_autores')
+
+class LibroUpdateView(UpdateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'gestion/libro_form.html'
+    success_url = reverse_lazy('lista_libros')
