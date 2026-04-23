@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Autor, Libro
 from .forms import AutorForm, LibroForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 # CRUD Autores
 def lista_autores(request):
     autores = Autor.objects.all()
@@ -69,3 +70,15 @@ def eliminar_libro(request, pk):
         libro.delete()
         return redirect('lista_libros')
     return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
+
+
+#Vistas genéricas
+class AutorListView(ListView):
+    model = Autor
+    template_name = 'gestion/lista_autores.html'
+    context_object_name = 'autores'
+    
+class LibroListView(ListView):
+    model = Libro
+    template_name = 'gestion/lista_libros.html'
+    context_object_name = 'libros'
