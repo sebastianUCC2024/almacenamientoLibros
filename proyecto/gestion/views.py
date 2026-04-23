@@ -130,3 +130,6 @@ class LibroDeleteView(DeleteView):
     model = Libro
     template_name = 'gestion/libro_delete.html'
     success_url = reverse_lazy('lista_libros')
+
+def inicio(request):
+    return render(request, 'gestion/inicio.html')
