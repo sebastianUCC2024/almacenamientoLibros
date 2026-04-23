@@ -1,21 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gestión</title>
+    <title>Sistema de Gestión</title>
     <style>
-        body { font-family: Arial; background:#f4f6f9; margin:0; }
-        header { background:#2c3e50; color:white; padding:15px; text-align:center; }
-        .container { width:80%; margin:30px auto; }
-        .card { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-        button { background:#3498db; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; }
-        .danger { background:#e74c3c; }
-        a { text-decoration:none; }
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .danger {
+            background: #e74c3c;
+        }
     </style>
 </head>
 <body>
-<header><h1>Sistema de Gestión</h1></header>
+
+<header>
+    <h1>Sistema de Gestión</h1>
+
+    <nav>
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="{% url 'lista_autores' %}">Autores</a>
+        <a href="{% url 'lista_libros' %}">Libros</a>
+    </nav>
+</header>
+
 <div class="container">
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </div>
+
 </body>
 </html>
