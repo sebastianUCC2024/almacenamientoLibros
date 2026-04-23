@@ -106,3 +106,15 @@ class LibroCreateView(CreateView):
     form_class = LibroForm
     template_name = 'gestion/libro_form.html'
     success_url = reverse_lazy('lista_libros')
+
+class AutorUpdateView(UpdateView):
+    model = Autor
+    form_class = AutorForm
+    template_name = 'gestion/autor_form.html'
+    success_url = reverse_lazy('lista_autores')
+
+class LibroUpdateView(UpdateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'gestion/libro_form.html'
+    success_url = reverse_lazy('lista_libros')
