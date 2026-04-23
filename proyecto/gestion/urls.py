@@ -21,4 +21,5 @@ urlpatterns = [
     path('gen/libros/crear/', views.LibroCreateView.as_view(), name='libro_create'),
     path('gen/libros/editar/<int:pk>/', views.LibroUpdateView.as_view(), name='libro_update'),
     path('gen/libros/eliminar/<int:pk>/', views.LibroDeleteView.as_view(), name='libro_delete'),
+    path('', views.inicio, name='inicio'),
 ]
