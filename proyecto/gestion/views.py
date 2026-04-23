@@ -98,7 +98,7 @@ class LibroDeleteView(DeleteView):
 class AutorCreateView(CreateView):
     model = Autor
     form_class = AutorForm
-    template_name = 'gestion/autor_form.html'
+    template_name = 'gestion/autor_create.html'
     success_url = reverse_lazy('lista_autores')
 
 class LibroCreateView(CreateView):
@@ -110,7 +110,7 @@ class LibroCreateView(CreateView):
 class AutorUpdateView(UpdateView):
     model = Autor
     form_class = AutorForm
-    template_name = 'gestion/autor_form.html'
+    template_name = 'gestion/autor_update.html'
     success_url = reverse_lazy('lista_autores')
 
 class LibroUpdateView(UpdateView):
