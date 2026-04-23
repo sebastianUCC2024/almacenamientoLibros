@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+<h2>Eliminar Libro</h2>
+
+<p>¿Seguro que quieres eliminar "{{ libro.titulo }}"?</p>
+
+<form method="POST">
+{% csrf_token %}
+<button class="danger">Eliminar</button>
+</form>
+
+</div>
+{% endblock %}
