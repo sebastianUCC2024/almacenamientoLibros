@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+<h2>Libros</h2>
+
+<a href="{% url 'crear_libro' %}"><button>Nuevo Libro</button></a>
+
+<ul>
+{% for libro in libros %}
+<li>
+{{ libro.titulo }} - {{ libro.autor.nombre }}
+
+<a href="{% url 'editar_libro' libro.pk %}"><button>Editar</button></a>
+<a href="{% url 'eliminar_libro' libro.pk %}"><button class="danger">Eliminar</button></a>
+</li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}
