@@ -33,3 +33,39 @@ def eliminar_autor(request, pk):
         autor.delete()
         return redirect('lista_autores')
     return render(request,'gestion/autor_confirm_delete.html',{'autor':autor})
+
+# CRUD Libros
+def lista_libros(request):
+    libros = Libro.objects.all()
+    return render(request, 'gestion/lista_libros.html', {'libros': libros})
+
+
+def crear_libro(request):
+    if request.method == 'POST':
+        form = LibroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_libros')
+    else:
+        form = LibroForm()
+    return render(request, 'gestion/libro_form.html', {'form': form})
+
+
+def editar_libro(request, pk):
+    libro = get_object_or_404(Libro, pk=pk)
+    if request.method == 'POST':
+        form = LibroForm(request.POST, instance=libro)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_libros')
+    else:
+        form = LibroForm(instance=libro)
+    return render(request, 'gestion/libro_form.html', {'form': form})
+
+
+def eliminar_libro(request, pk):
+    libro = get_object_or_404(Libro, pk=pk)
+    if request.method == 'POST':
+        libro.delete()
+        return redirect('lista_libros')
+    return render(request, 'gestion/libro_confirm_delete.html', {'libro': libro})
